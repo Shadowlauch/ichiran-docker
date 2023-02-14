@@ -1,22 +1,18 @@
 # Ichiran Docker 
 
-This is a docker-compose project to setup and run https://github.com/tshatrov/ichiran/
+This is a docker project to setup and run https://github.com/tshatrov/ichiran/
 
-##Setup
+A lot of the docker work was done by https://github.com/getrasa/ichiran-docker
 
-1. Create a .env file with POSTGRES_PASSWORD=VALUE (can be anything this will be passed to postgres and the ichiran container)
-2. RUN `docker-compose up -d postgres` 
-3. RUN `docker-compose up ichiran`
+## Setup
 
-The setup will take a while and the console output might be scuffed, but it should work in the end.
+1. Build the container via `docker build -t ichiran-docker .`
+2. Run container via `docker run ichiran-docker -p 3005:80` (the number in front of the : is the port on the host machine)
 
-After the setup is done you can CTRL C out of it and start it in the background~~ ~~with
-
-`docker-compose up -d ichiran`
 
 ## Access
 
-To get the segmentation you have to do a post request to http://localhost:2050/segmentation with the body
+To get the segmentation you have to do a post request to http://localhost:3005/segmentation with the body
 
 ```
 {
@@ -25,3 +21,5 @@ To get the segmentation you have to do a post request to http://localhost:2050/s
 ```
 
 and a Content-Type header with application/json
+
+## 
