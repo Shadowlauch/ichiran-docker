@@ -7,7 +7,7 @@ A lot of the docker work was done by https://github.com/getrasa/ichiran-docker
 ## Setup
 
 1. Build the container via `docker build -t ichiran-docker .`
-2. Run container via `docker run ichiran-docker -p 3005:80` (the number in front of the : is the port on the host machine)
+2. Run container via `docker run -p 3005:80 ichiran-docker` (the number in front of the : is the port on the host machine)
 
 
 ## Access
