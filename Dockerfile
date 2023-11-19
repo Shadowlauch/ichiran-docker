@@ -49,7 +49,7 @@ COPY ./settings.lisp /root/quicklisp/local-projects/ichiran/settings.lisp
 RUN service postgresql start && \
   sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'postgres';" && \
   sudo -u postgres createdb -E 'UTF8' -l 'ja_JP.utf8' -T template0 ichiran-db && \
-  sudo -u postgres pg_restore -c -d ichiran-db ichiran-230122.pgdump || true && \
+  sudo -u postgres pg_restore -c -d ichiran-db ichiran-230122.pgdump --no-owner --no-privileges || true && \
   sbcl --eval '(load "~/quicklisp/setup.lisp")' --eval '(ql:quickload :ichiran)' --eval '(ichiran/mnt:add-errata)' --eval '(ichiran/test:run-all-tests)' --eval '(sb-ext:quit)' && \
   sbcl --eval '(load "~/quicklisp/setup.lisp")' --eval '(ql:quickload :ichiran/cli)' --eval '(ichiran/cli:build)' && \
   /root/quicklisp/local-projects/ichiran/ichiran-cli "一覧は最高だぞ" && \
